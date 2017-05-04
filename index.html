@@ -1,204 +1,24 @@
 <head>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript">
-      /*--- POST送信 ---*/
-      function postJump(_url, _keys, _vals){
-          var html = '<form method="post" action="'+_url+'" id="postjump" style="display: none;">';
-          for(var cnt=0;cnt<_keys.length;cnt++){
-              html += '<input type="hidden" name="'+_keys[cnt]+'" value="'+_vals[cnt]+'" >';
-          }
-          html += '</form>';
-          $("body").append(html);
-          $('#postjump').submit();
-          $('#postjump').remove();
-      }
+  <script type="text/javascript" src=./post_script.js></script>
+  <script type="text/javascript" src=./ui_script.js></script>
 
-      /* --- Main_Jump --- */
-      function Jump(){
-        /* --- Formからのデータの受け取り --- */
-
-        //result
-        var names_array = [];
-        var values_array = [];
-
-        //URL
-        var url = url_form.textbox.value;
-
-        //Post1
-        try {
-          var post1_name = post1_form.name.value;
-          var post1_value = post1_form.value.value;
-
-          names_array.push(post1_name);
-          values_array.push(post1_value);
-        } catch (e) {
-
-        }
-        //Post2
-        try {
-          var post2_name = post2_form.name.value;
-          var post2_value = post2_form.value.value;
-
-          names_array.push(post2_name);
-          values_array.push(post2_value);
-        } catch (e) {
-
-        }
-        //Post3
-        try {
-          var post3_name = post3_form.name.value;
-          var post3_value = post3_form.value.value;
-
-          names_array.push(post3_name);
-          values_array.push(post3_value);
-        } catch (e) {
-
-        }
-        //Post4
-        try {
-          var post4_name = post4_form.name.value;
-          var post4_value = post4_form.value.value;
-
-          names_array.push(post4_name);
-          values_array.push(post4_value);
-        } catch (e) {
-
-        }
-        //Post5
-        try {
-          var post5_name = post5_form.name.value;
-          var post5_value = post5_form.value.value;
-
-          names_array.push(post5_name);
-          values_array.push(post5_value);
-        } catch (e) {
-
-        }
-        //Post6
-        try {
-          var post6_name = post6_form.name.value;
-          var post6_value = post6_form.value.value;
-
-          names_array.push(post6_name);
-          values_array.push(post6_value);
-        } catch (e) {
-
-        }
-        //Post7
-        try {
-          var post7_name = post7_form.name.value;
-          var post7_value = post7_form.value.value;
-
-          names_array.push(post7_name);
-          values_array.push(post7_value);
-        } catch (e) {
-
-        }
-        //Post8
-        try {
-          var post8_name = post8_form.name.value;
-          var post8_value = post8_form.value.value;
-
-          names_array.push(post8_name);
-          values_array.push(post8_value);
-        } catch (e) {
-
-        }
-        //Post9
-        try {
-          var post9_name = post9_form.name.value;
-          var post9_value = post9_form.value.value;
-
-          names_array.push(post9_name);
-          values_array.push(post9_value);
-        } catch (e) {
-
-        }
-        /* --- ---------------------- --- */
-
-
-        //送信
-        postJump(url, names_array, values_array)
-      }
-
+  <script>
+    function Jump(){
+      var form = getForms();
+      sendPost(form[0],form[1],form[2]);
+    }
   </script>
 </head>
 
 <body>
-    <!-- 送信フォーム -->
-
-    <!-- url -->
     <p>url</p>
     <form name="url_form">
         <input type="text" name="textbox">
         <input type="text" name="dummy" style="display:none;">
     </form>
-
-    <!-- post1 -->
-    <p>post1(key,value)</p>
-    <form name="post1_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post2 -->
-    <p>post2(key,value)</p>
-    <form name="post2_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post3 -->
-    <p>post3(key,value)</p>
-    <form name="post3_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post4 -->
-    <p>post3(key,value)</p>
-    <form name="post3_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post5 -->
-    <p>post5(key,value)</p>
-    <form name="post5_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post6 -->
-    <p>post6(key,value)</p>
-    <form name="post6_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post7 -->
-    <p>post7(key,value)</p>
-    <form name="post7_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post8 -->
-    <p>post8(key,value)</p>
-    <form name="post8_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-    </form>
-
-    <!-- post9 -->
-    <p>post9(key,value)</p>
-    <form name="post9_form">
-      <input type="text" name="name">
-      <input type="text" name="value">
-      <input type="text" name="dummy" style="display:none;">
-    </form>
-
-
-    <!-- ジャンプ -->
+    <button type="button" onclick=Add()>ADD</button>
     <button type="button" onclick=Jump()>JUMP</button>
+
+    <div id="post_form">
 </body>
